@@ -453,7 +453,12 @@ void Board::mouseButtonUp ( sf::Event::MouseButtonEvent ) {
 
 }
 
-int Board::numAdjacentUncoverableTiles ( Location location ) {
+void Board::mouseMoved ( sf::Event::MouseButtonEvent ) {
+
+
+
+}
+
 
     int adj = 0;
 
@@ -461,18 +466,12 @@ int Board::numAdjacentUncoverableTiles ( Location location ) {
 
         for ( long long x2 = max ( ( ( long long ) location.x ) - 1, 0ll ); x2 <= min ( ( long long ) location.x  + 1, ( ( long long ) boardWidth ) - 1 ); ++ x2 ) {
 
-            if ( markers [ x2 ] [ y2 ] == Marker::none || markers [ x2 ] [ y2 ] == Marker::questionmark ) ++ adj;
+            if ( markers [ x2 ] [ y2 ] == Marker::flag || markers [ x2 ] [ y2 ] == Marker::questionmark ) ++ adj;
 
         }
 
     }
 
     return adj;
-
-}
-
-void Board::mouseMoved ( sf::Event::MouseButtonEvent ) {
-
-
 
 }

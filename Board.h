@@ -49,7 +49,7 @@ class Board: public sf::Drawable {
 
         void reveal ( );
 
-        int numAdjacentUncoverableTiles ( Location location );
+        int numAdjacentFlaggedTiles ( const Location & location );
 
         template < typename T >
         void printBoardSizedMember ( vector < vector < T > > &, ostream & );
