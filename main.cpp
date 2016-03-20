@@ -98,6 +98,8 @@ int main ( int nArgs, char * arg [] ) {
         mainWindow.draw ( mainBoard );
         mainWindow.display ( );
 
+        if ( mainBoard.quitgame ) mainBoard = Board ( boardWidth, boardHeight, numBombs );
+
     }
 
 }
