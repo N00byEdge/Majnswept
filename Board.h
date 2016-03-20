@@ -10,27 +10,12 @@ class Board: public sf::Drawable {
         Board ( size_t _height, size_t _width, size_t numBombs );
         ~Board ( );
 
-        void gameOver ( );
-        void youWin ( );
-
-        int numAdjacentUncoveredTiles ( Location location );
-
         void clickTile ( Location & location, sf::Mouse::Button & button );
-        void revealTile ( Location & location );
-        void toggleMarker ( Location & location );
-
-        void updateTexture ( Location & location );
 
         virtual void draw ( sf::RenderTarget &, sf::RenderStates ) const;
 
         void mouseButtonDown ( sf::Event::MouseButtonEvent );
-        void mouseButtonUp ( sf::Event::MouseButtonEvent );
-        void mouseMoved ( sf::Event::MouseButtonEvent );
 
-        void setViewport ( Location viewportBegin, Location viewportEnd );
-
-        template < typename T >
-        void printBoardSizedMember ( vector < vector < T > > &, ostream & );
 
     protected:
 
@@ -59,6 +44,18 @@ class Board: public sf::Drawable {
 
         bool shouldQuitOnNextClick = 0;
 
+        void gameOver ( );
+        void youWin ( );
+
         int numAdjacentUncoverableTiles ( Location location );
+
+        template < typename T >
+        void printBoardSizedMember ( vector < vector < T > > &, ostream & );
+        void revealTile ( Location & location );
+        void toggleMarker ( Location & location );
+        void updateTexture ( Location & location );
+        void mouseButtonUp ( sf::Event::MouseButtonEvent );
+        void mouseMoved ( sf::Event::MouseButtonEvent );
+        void setViewport ( Location viewportBegin, Location viewportEnd );
 
 };
