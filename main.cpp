@@ -6,7 +6,7 @@ int main ( int nArgs, char * arg [] ) {
 
     loadAssets ( );
 
-    size_t boardWidth = 100, boardHeight = 100, numBombs = 20;
+    size_t boardWidth = 100, boardHeight = 100, numBombs = boardWidth * boardHeight / 6;
 
     if ( 1 < nArgs && nArgs < 3 ) {
 
@@ -97,6 +97,8 @@ int main ( int nArgs, char * arg [] ) {
         mainWindow.clear ( );
         mainWindow.draw ( mainBoard );
         mainWindow.display ( );
+
+        this_thread::sleep_for ( chrono::milliseconds ( 10 ) );
 
         if ( mainBoard.quitgame ) mainBoard = Board ( boardWidth, boardHeight, numBombs );
 
