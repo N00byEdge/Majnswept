@@ -141,7 +141,7 @@ Board::Board ( size_t _width, size_t _height, size_t _numBombs ): boardHeight ( 
 
     }
 	
-	if ( boardHeight * boardWidth == numBombs ) youWin ( );
+	if ( boardHeight * boardWidth == numBombs || numBombs == 0 ) youWin ( );
     numUnrevealedTiles = boardHeight * boardWidth;
 	
 }
