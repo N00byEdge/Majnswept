@@ -36,6 +36,8 @@ void Board::printBoardSizedMember ( vector < vector < T > > & m, ostream & os ) 
 }
 
 Board::Board ( size_t _width, size_t _height, size_t _numBombs ): boardHeight ( _height ), boardWidth ( _width ), numBombs ( _numBombs ) {
+	
+	if ( boardHeight * boardWidth < numBombs ) exit ( 5 );
 
     /* Create tables */
     #ifdef DEBUG
