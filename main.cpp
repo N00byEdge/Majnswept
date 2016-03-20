@@ -8,18 +8,18 @@ int main ( int nArgs, char * arg [] ) {
 
     size_t boardWidth = 100, boardHeight = 100, numBombs = boardWidth * boardHeight / 6;
 
-    if ( 1 < nArgs && nArgs < 3 ) {
+    if ( 2 < nArgs && nArgs < 4 ) {
 
-        cerr << "Usage: [width height numBombs]\n";
+        cerr << "Usage: Majnswept [width height numBombs]\n";
         return 1;
 
     }
 
-    if ( 1 < nArgs ) {
+    if ( 2 < nArgs ) {
 
-        boardWidth =  ( size_t ) atoi ( arg [ 0 ] );
-        boardHeight = ( size_t ) atoi ( arg [ 1 ] );
-        numBombs =    ( size_t ) atoi ( arg [ 2 ] );
+        boardWidth =  ( int ) atol ( arg [ 1 ] );
+        boardHeight = ( int ) atol ( arg [ 2 ] );
+        numBombs =    ( int ) atol ( arg [ 3 ] );
 
     }
 
