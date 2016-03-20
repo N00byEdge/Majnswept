@@ -16,7 +16,7 @@ class Board: public sf::Drawable {
 
         void mouseButtonDown ( sf::Event::MouseButtonEvent );
 
-        bool quitgame = false;
+        bool shouldQuitgame ( );
 
     protected:
 
@@ -31,7 +31,7 @@ class Board: public sf::Drawable {
         size_t boardWidth;
         size_t numBombs;
 
-        //int * drawTable;
+        bool quitGame = false;
 
         Location lastMousePos;
         bool lastWasPressed = false;

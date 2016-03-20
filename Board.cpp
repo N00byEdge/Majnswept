@@ -486,7 +486,7 @@ void loadAssets ( ) {
 
 void Board::mouseButtonDown ( sf::Event::MouseButtonEvent mbevent ) {
 
-    if ( shouldQuitOnNextClick ) quitgame = true;
+    if ( shouldQuitOnNextClick ) quitGame = true;
 
     Location t;
     t.x = mbevent.x / tilesize;
@@ -525,3 +525,9 @@ int Board::numAdjacentFlaggedTiles ( const Location & location ) {
     return adj;
 
 }
+bool Board::shouldQuitgame ( ) {
+
+    return quitGame;
+
+}
+

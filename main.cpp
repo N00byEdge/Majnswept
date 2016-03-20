@@ -100,7 +100,7 @@ int main ( int nArgs, char * arg [] ) {
 
         this_thread::sleep_for ( chrono::milliseconds ( 10 ) );
 
-        if ( mainBoard.quitgame ) mainBoard = Board ( boardWidth, boardHeight, numBombs );
+        if ( mainBoard.shouldQuitGame ( ) ) mainBoard = Board ( boardWidth, boardHeight, numBombs );
 
     }
 
