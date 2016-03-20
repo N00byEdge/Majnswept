@@ -306,6 +306,32 @@ void Board::revealTile ( const Location & location ) {
     if ( hasBomb [ location.x ] [ location.y ] ) gameOver ( );
     else {
 
+        if ( markers [ location.x ] [ location.y ] == Marker::revealed ) {
+
+            if ( numAdjacentFlaggedTiles ( location ) == numAdjacent [ location.x ] [ location.y ] ) {
+
+                for ( long long y2 = max ( ( ( long long ) location.y ) - 1, 0ll ); y2 <= min ( ( long long ) location.y + 1, ( ( long long ) boardHeight ) - 1 ); ++ y2 ) {
+
+                    for ( long long x2 = max ( ( ( long long ) location.x ) - 1, 0ll ); x2 <= min ( ( long long ) location.x  + 1, ( ( long long ) boardWidth ) - 1 ); ++ x2 ) {
+
+                        if ( markers [ x2 ] [ y2 ] == Marker::none ) {
+
+                            Location nextlocation;
+                            nextlocation.x = x2;
+                            nextlocation.y = y2;
+
+                            revealTile ( nextlocation );
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
         markers [ location.x ] [ location.y ] = Marker::revealed;
         updateTexture ( location );
         -- numUnrevealedTiles;
@@ -361,6 +387,7 @@ void Board::clickTile ( const Location & location, sf::Mouse::Button & button ) 
 
             case Marker::revealed:
 
+                revealTile( location );
                 break;
 
             case Marker::flag:
