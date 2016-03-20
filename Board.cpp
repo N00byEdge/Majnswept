@@ -525,7 +525,7 @@ int Board::numAdjacentFlaggedTiles ( const Location & location ) {
     return adj;
 
 }
-bool Board::shouldQuitgame ( ) {
+bool Board::shouldQuitGame ( ) {
 
     return quitGame;
 
