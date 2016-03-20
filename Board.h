@@ -37,13 +37,13 @@ class Board: public sf::Drawable {
         bool lastWasPressed = false;
         bool isDragging;
 
-        Location cameraPos = { 0, 0 };
+        Location cameraPos;
         Location viewportBegin;
         Location viewportEnd;
 
         size_t numUnrevealedTiles;
 
-        bool shouldQuitOnNextClick = 0;
+        bool shouldQuitOnNextClick = false;
 
         void gameOver ( );
         void youWin ( );
