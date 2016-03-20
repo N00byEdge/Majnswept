@@ -7,7 +7,7 @@ class Board: public sf::Drawable {
 
     public:
 
-        Board ( size_t _height, size_t _width, size_t numBombs );
+        Board ( size_t _width, size_t _height, size_t numBombs );
         ~Board ( );
 
         void clickTile ( const Location & location, sf::Mouse::Button & button );
