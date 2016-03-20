@@ -16,6 +16,7 @@ class Board: public sf::Drawable {
 
         void mouseButtonDown ( sf::Event::MouseButtonEvent );
 
+        bool quitgame = false;
 
     protected:
 
