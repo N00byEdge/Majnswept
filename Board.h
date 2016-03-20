@@ -47,6 +47,8 @@ class Board: public sf::Drawable {
         void gameOver ( );
         void youWin ( );
 
+        void reveal ( );
+
         int numAdjacentUncoverableTiles ( Location location );
 
         template < typename T >

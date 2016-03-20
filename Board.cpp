@@ -238,14 +238,35 @@ void Board::updateTexture ( Location & location ) {
 
 }
 
+void Board::reveal ( ) {
+
+    for ( size_t y = 0; y < boardHeight; ++ y ) {
+
+        for ( size_t x = 0; x < boardWidth; ++ x ) {
+
+            if ( markers [ x ] [ y ] == Marker::flag ) {
+
+                if ( hasBomb [ x ] [ y ] ) boardSprites [ x ] [ y ].setTexture ( tileTextureBomb );
+                else                       boardSprites [ x ] [ y ].setTexture ( tileTextureNoBomb );
+
+            } else if ( markers [ x ] [ y ] == Marker::none && hasBomb [ x ] [ y ] ) boardSprites [ x ] [ y ].setTexture ( tileTextureBomb );
+
+        }
+
+    }
+
+}
+
 void Board::gameOver ( ) {
 
+    reveal ( );
     shouldQuitOnNextClick = true;
 
 }
 
 void Board::youWin ( ) {
 
+    reveal ( );
     shouldQuitOnNextClick = true;
 
 }
