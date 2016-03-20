@@ -59,4 +59,6 @@ class Board: public sf::Drawable {
 
         bool shouldQuitOnNextClick = 0;
 
+        int numAdjacentUncoverableTiles ( Location location );
+
 };
