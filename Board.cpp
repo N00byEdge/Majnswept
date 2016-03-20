@@ -254,6 +254,13 @@ void Board::reveal ( ) {
                 else                       boardSprites [ x ] [ y ].setTexture ( tileTextureNoBomb );
 
             } else if ( markers [ x ] [ y ] == Marker::none && hasBomb [ x ] [ y ] ) boardSprites [ x ] [ y ].setTexture ( tileTextureBomb );
+			
+			else if ( markers [ x ] [ y ] == Marker::questionmark ) {
+				
+				if ( hasBomb [ x ] [ y ] ) boardSprites [ x ] [ y ].setTexture ( tileTextureBomb );
+                else                       boardSprites [ x ] [ y ].setTexture ( tileTextureNoBomb );
+				
+			}
 
         }
 
