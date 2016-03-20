@@ -171,7 +171,7 @@ void Board::draw ( sf::RenderTarget & target, sf::RenderStates states ) const {
 
 }
 
-void Board::updateTexture ( Location & location ) {
+void Board::updateTexture ( const Location & location ) {
 
     switch ( markers [ location.x ] [ location.y ] ) {
 
@@ -271,7 +271,7 @@ void Board::youWin ( ) {
 
 }
 
-void Board::toggleMarker ( Location & location ) {
+void Board::toggleMarker ( const Location & location ) {
 
     switch ( markers [ location.x ] [ location.y ] ) {
 
@@ -297,7 +297,7 @@ void Board::toggleMarker ( Location & location ) {
 
 }
 
-void Board::revealTile ( Location & location ) {
+void Board::revealTile ( const Location & location ) {
 
     #ifdef DEBUG
     printf ( "Revealing tile %d, %d\n", location.x, location.y );
@@ -339,7 +339,7 @@ void Board::revealTile ( Location & location ) {
 
 }
 
-void Board::clickTile ( Location & location, sf::Mouse::Button & button ) {
+void Board::clickTile ( const Location & location, sf::Mouse::Button & button ) {
 
     #ifdef DEBUG
     printf ( "Click at location %d, %d\n", location.x, location.y );

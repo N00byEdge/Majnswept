@@ -10,7 +10,7 @@ class Board: public sf::Drawable {
         Board ( size_t _height, size_t _width, size_t numBombs );
         ~Board ( );
 
-        void clickTile ( Location & location, sf::Mouse::Button & button );
+        void clickTile ( const Location & location, sf::Mouse::Button & button );
 
         virtual void draw ( sf::RenderTarget &, sf::RenderStates ) const;
 
@@ -53,9 +53,9 @@ class Board: public sf::Drawable {
 
         template < typename T >
         void printBoardSizedMember ( vector < vector < T > > &, ostream & );
-        void revealTile ( Location & location );
-        void toggleMarker ( Location & location );
-        void updateTexture ( Location & location );
+        void revealTile ( const Location & location );
+        void toggleMarker ( const Location & location );
+        void updateTexture ( const Location & location );
         void mouseButtonUp ( sf::Event::MouseButtonEvent );
         void mouseMoved ( sf::Event::MouseButtonEvent );
         void setViewport ( Location viewportBegin, Location viewportEnd );
