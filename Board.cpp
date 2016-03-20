@@ -109,7 +109,9 @@ Board::Board ( size_t _width, size_t _height, size_t _numBombs ): boardHeight ( 
                     ++ numAdjacent [ x2 ] [ y2 ];
 
             }
+			
         }
+		
     }
 
     #ifdef DEBUG
