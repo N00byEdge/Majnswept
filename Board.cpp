@@ -295,6 +295,10 @@ void Board::toggleMarker ( const Location & location ) {
             updateTexture ( location );
             break;
 
+        case Marker::revealed:
+
+            revealTile ( location );
+
     }
 
 }
