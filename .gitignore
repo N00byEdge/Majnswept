@@ -78,8 +78,8 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# Assets
-assets*
+# Build files
+bin*
 
 # Code::Blocks unnecessary project files
 *.depend
