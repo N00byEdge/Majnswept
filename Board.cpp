@@ -406,7 +406,7 @@ void Board::clickTile ( const Location & location, sf::Mouse::Button & button ) 
 
 void loadAssets ( ) {
 
-    #ifndef DEBUG
+    #ifdef DEBUG
     printf ("Loading assets\n");
     #endif // DEBUG
 
@@ -456,7 +456,7 @@ void loadAssets ( ) {
     texturefile = "./assets/img/" + tilesizestring + "_questionmark.png";
     if ( !tileTextureQuestionMark.loadFromFile ( texturefile ) ) exit ( 5 );
 
-    #ifndef DEBUG
+    #ifdef DEBUG
     printf ("Finished loading assets\n");
     #endif // DEBUG
 
