@@ -361,6 +361,10 @@ void Board::revealTile ( const Location & location ) {
 
     }
 
+	#ifdef DEBUG
+	cerr << numUnrevealedTiles << ", " << numBombs << "\n";
+	#endif //DEBUG
+
     if ( numUnrevealedTiles == numBombs ) youWin ( );
 
 }
