@@ -459,6 +459,7 @@ void Board::mouseMoved ( sf::Event::MouseButtonEvent ) {
 
 }
 
+int Board::numAdjacentFlaggedTiles ( const Location & location ) {
 
     int adj = 0;
 
