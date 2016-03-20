@@ -57,4 +57,6 @@ class Board: public sf::Drawable {
 
         size_t numUnrevealedTiles;
 
+        bool shouldQuitOnNextClick = 0;
+
 };

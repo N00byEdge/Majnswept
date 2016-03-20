@@ -240,13 +240,13 @@ void Board::updateTexture ( Location & location ) {
 
 void Board::gameOver ( ) {
 
-    exit ( 55555 );
+    shouldQuitOnNextClick = true;
 
 }
 
 void Board::youWin ( ) {
 
-    exit ( 0 );
+    shouldQuitOnNextClick = true;
 
 }
 
@@ -415,6 +415,8 @@ void loadAssets ( ) {
 }
 
 void Board::mouseButtonDown ( sf::Event::MouseButtonEvent mbevent ) {
+
+    if ( shouldQuitOnNextClick ) exit ( 0 );
 
     Location t;
     t.x = mbevent.x / tilesize;
