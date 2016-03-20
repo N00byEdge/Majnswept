@@ -302,7 +302,7 @@ void Board::toggleMarker ( const Location & location ) {
 void Board::revealTile ( const Location & location ) {
 
     #ifdef DEBUG
-    printf ( "Revealing tile %d, %d\n", location.x, location.y );
+    printf ( "Revealing tile %zu, %zu\n", location.x, location.y );
     #endif // DEBUG
 
     if ( hasBomb [ location.x ] [ location.y ] ) gameOver ( );
@@ -374,7 +374,7 @@ void Board::revealTile ( const Location & location ) {
 void Board::clickTile ( const Location & location, sf::Mouse::Button & button ) {
 
     #ifdef DEBUG
-    printf ( "Click at location %d, %d\n", location.x, location.y );
+    printf ( "Click at location %zu, %zu\n", location.x, location.y );
     #endif // DEBUG
 
     if ( button == sf::Mouse::Button::Left ) {
