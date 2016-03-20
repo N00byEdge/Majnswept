@@ -44,9 +44,47 @@
 					<Add directory="%SFML64232%/lib/" />
 				</Linker>
 			</Target>
+			<Target title="Debug OS X x64">
+				<Option platforms="Mac;" />
+				<Option output="bin/DebugOSX/Majnswept" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/DebugOSX/" />
+				<Option type="1" />
+				<Option compiler="clang" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-static-libgcc -static-libstdc++" />
+					<Add option="-DDEBUG" />
+					<Add directory="/SFML/include/" />
+				</Compiler>
+				<Linker>
+					<Add library="sfml-graphics" />
+					<Add library="sfml-window" />
+					<Add library="sfml-network" />
+					<Add library="sfml-system" />
+					<Add directory="/SFML/lib/" />
+				</Linker>
+			</Target>
+			<Target title="Release OS X x64">
+				<Option platforms="Mac;" />
+				<Option output="bin/ReleaseOSX/Majnswept" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/ReleaseOSX/" />
+				<Option type="0" />
+				<Option compiler="clang" />
+				<Compiler>
+					<Add option="-Ofast" />
+					<Add directory="/SFML/include/" />
+				</Compiler>
+				<Linker>
+					<Add library="sfml-graphics" />
+					<Add library="sfml-window" />
+					<Add library="sfml-network" />
+					<Add library="sfml-system" />
+					<Add directory="/SFML/lib/" />
+				</Linker>
+			</Target>
 		</Build>
 		<VirtualTargets>
-			<Add alias="All" targets="Debug Windows x64;Release Windows x64;" />
+			<Add alias="All" targets="Debug Windows x64;Release Windows x64;Debug OS X x64;Release OS X x64;" />
 		</VirtualTargets>
 		<Compiler>
 			<Add option="-std=c++0x" />
