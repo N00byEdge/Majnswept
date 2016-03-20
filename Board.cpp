@@ -336,34 +336,36 @@ void Board::revealTile ( const Location & location ) {
 
             }
 
-        }
+        } else {
 
-        markers [ location.x ] [ location.y ] = Marker::revealed;
-        updateTexture ( location );
-        -- numUnrevealedTiles;
+        	markers [ location.x ] [ location.y ] = Marker::revealed;
+        	updateTexture ( location );
+        	-- numUnrevealedTiles;
 
-        if ( !numAdjacent [ location.x ] [ location.y ] ) {
+        	if ( !numAdjacent [ location.x ] [ location.y ] ) {
 
-            Location nextLocation;
+            	Location nextLocation;
 
-            for ( long long y2 = max ( ( ( long long ) location.y ) - 1, 0ll ); y2 <= min ( ( long long ) location.y + 1, ( ( long long ) boardHeight ) - 1 ); ++ y2 ) {
+            	for ( long long y2 = max ( ( ( long long ) location.y ) - 1, 0ll ); y2 <= min ( ( long long ) location.y + 1, ( ( long long ) boardHeight ) - 1 ); ++ y2 ) {
 
-                for ( long long x2 = max ( ( ( long long ) location.x ) - 1, 0ll ); x2 <= min ( ( long long ) location.x  + 1, ( ( long long ) boardWidth ) - 1 ); ++ x2 ) {
+                	for ( long long x2 = max ( ( ( long long ) location.x ) - 1, 0ll ); x2 <= min ( ( long long ) location.x  + 1, ( ( long long ) boardWidth ) - 1 ); ++ x2 ) {
 
-                    if ( markers [ x2 ] [ y2 ] != Marker::revealed ) {
+                    	if ( markers [ x2 ] [ y2 ] != Marker::revealed ) {
 
-                        nextLocation.x = x2;
-                        nextLocation.y = y2;
+                        	nextLocation.x = x2;
+                        	nextLocation.y = y2;
 
-                        revealTile ( nextLocation );
+                        	revealTile ( nextLocation );
 
-                    }
+                    	}
 
-                }
+                	}
 
-            }
+            	}
 
-        }
+        	}
+			
+		}
 
     }
 
