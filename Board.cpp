@@ -35,7 +35,7 @@ void Board::printBoardSizedMember ( vector < vector < T > > & m, ostream & os ) 
 
 }
 
-Board::Board ( size_t _height, size_t _width, size_t numBombs ): boardHeight ( _height ), boardWidth ( _width ) {
+Board::Board ( size_t _height, size_t _width, size_t _numBombs ): boardHeight ( _height ), boardWidth ( _width ), numBombs ( _numBombs ) {
 
     /* Create tables */
     #ifdef DEBUG
@@ -136,6 +136,8 @@ Board::Board ( size_t _height, size_t _width, size_t numBombs ): boardHeight ( _
         }
 
     }
+
+    numUnrevealedTiles = boardHeight * boardWidth;
 
 }
 
@@ -242,6 +244,12 @@ void Board::gameOver ( ) {
 
 }
 
+void Board::youWin ( ) {
+
+    exit ( 0 );
+
+}
+
 void Board::toggleMarker ( Location & location ) {
 
     switch ( markers [ location.x ] [ location.y ] ) {
@@ -279,6 +287,7 @@ void Board::revealTile ( Location & location ) {
 
         markers [ location.x ] [ location.y ] = Marker::revealed;
         updateTexture ( location );
+        -- numUnrevealedTiles;
 
         if ( !numAdjacent [ location.x ] [ location.y ] ) {
 
@@ -304,6 +313,8 @@ void Board::revealTile ( Location & location ) {
         }
 
     }
+
+    if ( numUnrevealedTiles == numBombs ) youWin ( );
 
 }
 

@@ -11,6 +11,7 @@ class Board: public sf::Drawable {
         ~Board ( );
 
         void gameOver ( );
+        void youWin ( );
 
         int numAdjacentUncoveredTiles ( Location location );
 
@@ -42,6 +43,7 @@ class Board: public sf::Drawable {
 
         size_t boardHeight;
         size_t boardWidth;
+        size_t numBombs;
 
         //int * drawTable;
 
@@ -52,5 +54,7 @@ class Board: public sf::Drawable {
         Location cameraPos = { 0, 0 };
         Location viewportBegin;
         Location viewportEnd;
+
+        size_t numUnrevealedTiles;
 
 };
