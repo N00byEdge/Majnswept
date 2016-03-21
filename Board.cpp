@@ -60,8 +60,8 @@ Board::Board ( size_t _width, size_t _height, size_t _numBombs ): boardHeight ( 
     vector < size_t > xBombs ( boardWidth, 0 );
 
     /* Distributions for randomizing */
-    uniform_int_distribution < size_t > xDist ( 0, boardWidth );
-    uniform_int_distribution < size_t > yDist ( 0, boardHeight );
+    uniform_int_distribution < size_t > xDist ( 0, boardWidth - 1 );
+    uniform_int_distribution < size_t > yDist ( 0, boardHeight - 1 );
 
 
     /* Distributing bombs uniformally between columns */
@@ -73,7 +73,7 @@ Board::Board ( size_t _width, size_t _height, size_t _numBombs ): boardHeight ( 
 
         size_t randomX = xDist ( randomDevice );
 
-        if ( xBombs [ randomX ] < boardWidth ) ++ xBombs [ randomX ];
+        if ( xBombs [ randomX ] < boardHeight ) ++ xBombs [ randomX ];
         else -- i;
 
     }
