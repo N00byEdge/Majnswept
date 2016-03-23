@@ -217,7 +217,9 @@ void Config::loadConfigFile ( string _filename ) {
 
 Option * Config::getOption ( string name ) {
 
-    return & options.find ( name ) -> second;
+    auto ptr = options.find ( name );
+
+    return ptr == options.end ( ) ? nullptr : & ptr -> second;
 
 }
 
