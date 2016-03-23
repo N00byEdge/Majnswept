@@ -140,8 +140,8 @@ int main ( int nArgs, char * arg [] ) {
 
             renderClock.restart ( );
             mainWindow.draw ( mainBoard );
-            sleepTime = sf::microseconds ( renderClock.getElapsedTime ( ).asMicroseconds ( ) - 1000000/maxFPS );
-
+            sleepTime = sf::microseconds ( 1000000/maxFPS - renderClock.getElapsedTime ( ).asMicroseconds ( ) );
+            
         } else mainWindow.draw ( mainBoard );
 
         mainWindow.display ( );
