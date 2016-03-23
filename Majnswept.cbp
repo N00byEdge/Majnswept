@@ -52,7 +52,6 @@
 				<Option compiler="clang" />
 				<Compiler>
 					<Add option="-g" />
-					<Add option="-static-libgcc -static-libstdc++" />
 					<Add option="-DDEBUG" />
 					<Add directory="/SFML/include/" />
 				</Compiler>
@@ -122,7 +121,7 @@
 			</Target>
 		</Build>
 		<VirtualTargets>
-			<Add alias="All" targets="Debug Windows x64;Release Windows x64;Debug OS X x64;Release OS X x64;Debug Linux x64;Release Linux x64" />
+			<Add alias="All" targets="Debug Windows x64;Release Windows x64;Debug OS X x64;Release OS X x64;Debug Linux x64;Release Linux x64;" />
 		</VirtualTargets>
 		<Compiler>
 			<Add option="-std=c++0x" />
