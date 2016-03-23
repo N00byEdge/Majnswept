@@ -1,5 +1,21 @@
 #include "Board.h"
 
+static sf::Texture tileTexture1;
+static sf::Texture tileTexture2;
+static sf::Texture tileTexture3;
+static sf::Texture tileTexture4;
+static sf::Texture tileTexture5;
+static sf::Texture tileTexture6;
+static sf::Texture tileTexture7;
+static sf::Texture tileTexture8;
+static sf::Texture tileTextureBomb;
+static sf::Texture tileTextureFlag;
+static sf::Texture tileTextureEmpty;
+static sf::Texture tileTextureHidden;
+static sf::Texture tileTextureNoBomb;
+static sf::Texture tileTextureQuestionMark;
+
+
 template < typename T >
 void Board::printBoardSizedMember ( vector < vector < T > > & m, ostream & os ) {
 
@@ -456,3 +472,68 @@ bool Board::shouldQuitGame ( ) {
 
 }
 
+string Board::getBoardStatus ( ) {
+
+    if ( won ) return "You win!";
+    else if ( quitGame ) return "You lose!: " + to_string ( max ( numFlags, numUnrevealedTiles ) - numUnrevealedTiles / 100 ) + "%";
+    else return to_string ( numUnrevealedTiles ) + " unrevealed tiles, " + to_string ( numFlags ) + " flags – " + to_string ( max ( numFlags, numUnrevealedTiles ) - numUnrevealedTiles / 100 );
+
+}
+
+void loadAssets ( size_t tilesize ) {
+
+    #ifdef DEBUG
+    printf ("Loading assets\n");
+    #endif // DEBUG
+
+    string tilesizestring = to_string ( tilesize );
+
+    string texturefile;
+
+    texturefile = "./assets/img/" + tilesizestring + "_1.png";
+    if ( !tileTexture1.loadFromFile ( texturefile ) ) exit ( 5 );
+
+    texturefile = "./assets/img/" + tilesizestring + "_2.png";
+    if ( !tileTexture2.loadFromFile ( texturefile ) ) exit ( 5 );
+
+    texturefile = "./assets/img/" + tilesizestring + "_3.png";
+    if ( !tileTexture3.loadFromFile ( texturefile ) ) exit ( 5 );
+
+    texturefile = "./assets/img/" + tilesizestring + "_4.png";
+    if ( !tileTexture4.loadFromFile ( texturefile ) ) exit ( 5 );
+
+    texturefile = "./assets/img/" + tilesizestring + "_5.png";
+    if ( !tileTexture5.loadFromFile ( texturefile ) ) exit ( 5 );
+
+    texturefile = "./assets/img/" + tilesizestring + "_6.png";
+    if ( !tileTexture6.loadFromFile ( texturefile ) ) exit ( 5 );
+
+    texturefile = "./assets/img/" + tilesizestring + "_7.png";
+    if ( !tileTexture7.loadFromFile ( texturefile ) ) exit ( 5 );
+
+    texturefile = "./assets/img/" + tilesizestring + "_8.png";
+    if ( !tileTexture8.loadFromFile ( texturefile ) ) exit ( 5 );
+
+    texturefile = "./assets/img/" + tilesizestring + "_bomb.png";
+    if ( !tileTextureBomb.loadFromFile ( texturefile ) ) exit ( 5 );
+
+    texturefile = "./assets/img/" + tilesizestring + "_flag.png";
+    if ( !tileTextureFlag.loadFromFile ( texturefile ) ) exit ( 5 );
+
+    texturefile = "./assets/img/" + tilesizestring + "_empty.png";
+    if ( !tileTextureEmpty.loadFromFile ( texturefile ) ) exit ( 5 );
+
+    texturefile = "./assets/img/" + tilesizestring + "_hidden.png";
+    if ( !tileTextureHidden.loadFromFile ( texturefile ) ) exit ( 5 );
+
+    texturefile = "./assets/img/" + tilesizestring + "_nobomb.png";
+    if ( !tileTextureNoBomb.loadFromFile ( texturefile ) ) exit ( 5 );
+
+    texturefile = "./assets/img/" + tilesizestring + "_questionmark.png";
+    if ( !tileTextureQuestionMark.loadFromFile ( texturefile ) ) exit ( 5 );
+
+    #ifdef DEBUG
+    printf ("Finished loading assets\n");
+    #endif // DEBUG
+
+}
