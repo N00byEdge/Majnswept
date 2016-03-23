@@ -1,23 +1,5 @@
 #include "Board.h"
 
-std::random_device randomDevice;
-std::mt19937 mersenneTwister ( randomDevice ( ) );
-
-sf::Texture tileTexture1;
-sf::Texture tileTexture2;
-sf::Texture tileTexture3;
-sf::Texture tileTexture4;
-sf::Texture tileTexture5;
-sf::Texture tileTexture6;
-sf::Texture tileTexture7;
-sf::Texture tileTexture8;
-sf::Texture tileTextureBomb;
-sf::Texture tileTextureFlag;
-sf::Texture tileTextureEmpty;
-sf::Texture tileTextureHidden;
-sf::Texture tileTextureNoBomb;
-sf::Texture tileTextureQuestionMark;
-
 template < typename T >
 void Board::printBoardSizedMember ( vector < vector < T > > & m, ostream & os ) {
 

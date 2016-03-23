@@ -8,6 +8,9 @@
 
 #define tilesize 16
 
+static std::random_device randomDevice;
+static std::mt19937 mersenneTwister ( randomDevice ( ) );
+
 using namespace std;
 
 struct Location {
