@@ -1,11 +1,45 @@
+#include "Config.h"
 #include "Board.h"
 #include <chrono>
 #include <thread>
 
 int main ( int nArgs, char * arg [] ) {
 
+    size_t boardWidth, boardHeight, numBombs, tilesize;
 
-    size_t boardWidth = 100, boardHeight = 100, numBombs = boardWidth * boardHeight / 6;
+    Config cfg ( "Majnswept.cfg" );
+
+    Option optionBoardWidth ( 20ll );
+    cfg.insertOption ( "boardWidth", optionBoardWidth );
+    Option optionBoardHeight ( 20ll );
+    cfg.insertOption ( "boardHeight", optionBoardHeight );
+    Option optionMaxFPS ( 60.0L );
+    cfg.insertOption ( "maxFPS", optionMaxFPS );
+    Option optionNumBombs ( 70ll );
+    cfg.insertOption ( "numBombs", optionNumBombs );
+    Option optionSleepRecalculatePeriod ( 128ll );
+    cfg.insertOption ( "sleepRecalculatePeriod", optionSleepRecalculatePeriod );
+    Option optionTilesize ( 16ll );
+    cfg.insertOption ( "tilesize", optionTilesize );
+
+    cfg.loadConfigFile ( );
+
+    optionBoardWidth = *cfg.getOption ( "boardWidth" );
+    optionBoardHeight = *cfg.getOption ( "boardHeight" );
+    optionMaxFPS = *cfg.getOption ( "maxFPS" );
+    optionNumBombs = *cfg.getOption ( "numBombs" );
+    optionSleepRecalculatePeriod = *cfg.getOption ( "sleepRecalculatePeriod" );
+    optionTilesize = *cfg.getOption ( "tilesize" );
+
+    boardWidth = optionBoardWidth.i;
+    boardHeight = optionBoardHeight.i;
+    maxFPS = optionMaxFPS.f;
+    numBombs = optionNumBombs.i;
+    sleepRecalculatePeriod = optionSleepRecalculatePeriod.i;
+    tilesize = optionTilesize.i;
+
+    cfg.saveConfigFile ( );
+
     loadAssets ( tilesize );
 
     if ( 2 < nArgs && nArgs < 4 ) {
@@ -23,11 +57,18 @@ int main ( int nArgs, char * arg [] ) {
 
     }
 
-    Board mainBoard ( boardWidth, boardHeight, numBombs );
+    int nDraws = 0;
+    sf::Time sleepTime;
+    sf::Clock renderClock;
 
-    sf::RenderWindow mainWindow ( sf::VideoMode ( boardWidth * tilesize, boardHeight * tilesize ), "Majnswept", sf::Style::Close );
+    Board mainBoard ( boardWidth, boardHeight, numBombs, tilesize );
+    sf::RenderWindow mainWindow ( sf::VideoMode ( boardWidth * tilesize, boardHeight * tilesize ), "Majnswept: ", sf::Style::Close );
+
 
     while ( mainWindow.isOpen ( ) ) {
+
+        string windowTitle = "Majnswept: " + mainBoard.getBoardStatus ( );
+        //mainWindow.setTitle ( windowTitle );
 
         sf::Event event;
 
@@ -95,12 +136,19 @@ int main ( int nArgs, char * arg [] ) {
         }
 
         mainWindow.clear ( );
-        mainWindow.draw ( mainBoard );
+        if ( nDraws % sleepRecalculatePeriod == 0 ) {
+
+            renderClock.restart ( );
+            mainWindow.draw ( mainBoard );
+            sleepTime = sf::microseconds ( renderClock.getElapsedTime ( ).asMicroseconds ( ) - 1000000/maxFPS );
+
+        } else mainWindow.draw ( mainBoard );
+
         mainWindow.display ( );
 
-        this_thread::sleep_for ( chrono::milliseconds ( 10 ) );
+        sf::sleep ( sleepTime );
 
-        if ( mainBoard.shouldQuitGame ( ) ) mainBoard = Board ( boardWidth, boardHeight, numBombs );
+        if ( mainBoard.shouldQuitGame ( ) ) mainBoard = Board ( boardWidth, boardHeight, numBombs, tilesize );
 
     }
 

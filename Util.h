@@ -6,7 +6,10 @@
 #include <random>
 #include "SFML/Graphics.hpp"
 
-#define tilesize 16
+static const size_t npos = -1;
+
+static float maxFPS;
+static int sleepRecalculatePeriod;
 
 static std::random_device randomDevice;
 static std::mt19937 mersenneTwister ( randomDevice ( ) );

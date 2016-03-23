@@ -17,8 +17,8 @@ void Board::printBoardSizedMember ( vector < vector < T > > & m, ostream & os ) 
 
 }
 
-Board::Board ( size_t _width, size_t _height, size_t _numBombs ): boardHeight ( _height ), boardWidth ( _width ), numBombs ( _numBombs ) {
-	
+Board::Board ( size_t _width, size_t _height, size_t _numBombs, size_t _tilesize ): boardHeight ( _height ), boardWidth ( _width ), numBombs ( _numBombs ), tilesize ( _tilesize ) {
+
 	if ( boardHeight * boardWidth < numBombs ) exit ( 5 );
 	
     /* Create tables */
@@ -449,6 +449,7 @@ int Board::numAdjacentFlaggedTiles ( const Location & location ) {
     return adj;
 
 }
+
 bool Board::shouldQuitGame ( ) {
 
     return quitGame;

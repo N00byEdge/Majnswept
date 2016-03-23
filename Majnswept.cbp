@@ -130,6 +130,8 @@
 		<Unit filename="Assets.h" />
 		<Unit filename="Board.cpp" />
 		<Unit filename="Board.h" />
+		<Unit filename="Config.cpp" />
+		<Unit filename="Config.h" />
 		<Unit filename="Util.cpp" />
 		<Unit filename="Util.h" />
 		<Unit filename="main.cpp" />
