@@ -4,9 +4,9 @@
 
 int main ( int nArgs, char * arg [] ) {
 
-    loadAssets ( );
 
     size_t boardWidth = 100, boardHeight = 100, numBombs = boardWidth * boardHeight / 6;
+    loadAssets ( tilesize );
 
     if ( 2 < nArgs && nArgs < 4 ) {
 
@@ -17,9 +17,9 @@ int main ( int nArgs, char * arg [] ) {
 
     if ( 2 < nArgs ) {
 
-        boardWidth =  ( int ) atol ( arg [ 1 ] );
-        boardHeight = ( int ) atol ( arg [ 2 ] );
-        numBombs =    ( int ) atol ( arg [ 3 ] );
+        boardWidth =  atol ( arg [ 1 ] );
+        boardHeight = atol ( arg [ 2 ] );
+        numBombs =    atol ( arg [ 3 ] );
 
     }
 

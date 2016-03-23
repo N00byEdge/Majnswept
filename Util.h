@@ -17,4 +17,19 @@ struct Location {
 
 };
 
-void loadAssets ( );
+static sf::Texture tileTexture1;
+static sf::Texture tileTexture2;
+static sf::Texture tileTexture3;
+static sf::Texture tileTexture4;
+static sf::Texture tileTexture5;
+static sf::Texture tileTexture6;
+static sf::Texture tileTexture7;
+static sf::Texture tileTexture8;
+static sf::Texture tileTextureBomb;
+static sf::Texture tileTextureFlag;
+static sf::Texture tileTextureEmpty;
+static sf::Texture tileTextureHidden;
+static sf::Texture tileTextureNoBomb;
+static sf::Texture tileTextureQuestionMark;
+
+void loadAssets ( size_t tilesize );
